@@ -2,7 +2,7 @@ version: "3.7"
 
 services:
   lnvisweb:
-    image: maxkotlan/ln-visualizer-web:v0.0.18@sha256:30c728488d50acf389e3d014083cfd4523d6e9c2ca5e5a8d91798ef4b958da8d
+    image: maxkotlan/ln-visualizer-web:v0.0.18@sha256:2e44ffcdd281780e600feaa3898109d6b160f9e139c60a95972fc00b1046a47e
     restart: on-failure
     stop_grace_period: 1m
     ports:
@@ -13,11 +13,11 @@ services:
       default:
         ipv4_address: "${APP_LNVISUALIZER_WEB_IP}"
   lnvisapi:
-    image: maxkotlan/ln-visualizer-api:v0.0.18@sha256:3533d0c72610e66d4dd3e3676e857d85a2faf41543f31e39093e5c9a1070dccc
+    image: maxkotlan/ln-visualizer-api:v0.0.18@sha256:8012398ef7b0f7ef309239243982fd9b14d2a8d9c7cedb75c289c8ee4f6ea8ef
     restart: on-failure
     stop_grace_period: 1m
     ports:
-      - "${APP_LNVISUALIZER_API_PORT}:${APP_LNVISUALIZER_API_PORT}"
+      - "${APP_LNVISUALIZER_API_PORT}:5647"
     volumes:
       - "${LND_DATA_DIR}:/lnd:ro"
     environment:
